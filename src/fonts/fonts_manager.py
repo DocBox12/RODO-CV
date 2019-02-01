@@ -4,7 +4,7 @@ import os
 
 def get_font(font_name):
 
-    path = os.getcwd() + "/"
+    path = os.getcwd() + "/fonts/"
 
     DICT_fonts = dict(
         arial = "arial.ttf",

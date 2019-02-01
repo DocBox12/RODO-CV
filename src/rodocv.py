@@ -18,6 +18,9 @@ def createpdf():
     font_text = config['Default']['font_text']
     font_size = config['Default']['font_size']
     align_font = config['Default']['align_font']
+    maring_left = config['Default']['maring_left']
+    margin_right = config['Default']['margin_right']
+    line_spacing = config['Default']['line_spacing']
 
     font_ttf = fonts.fonts_manager.get_font(font_text)
 
@@ -26,12 +29,11 @@ def createpdf():
 
 
     pdf = FPDF(format=document_format, orientation = "P")
-    pdf.l_margin = 10
-    #pdf.r_margin = 50
+    pdf.l_margin = int(maring_left)
     pdf.add_page()
     pdf.add_font(font_text, '', font_ttf, uni=True)
     pdf.set_font(font_text, "", size=int(font_size))
-    pdf.multi_cell(190,5, txt=rodo, align=align_font)
+    pdf.multi_cell(int(margin_right),int(line_spacing), txt=str(rodo), align=align_font)
     
     pdf.output("temp.pdf")
 
