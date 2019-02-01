@@ -30,13 +30,11 @@ def createpdf():
         print("Wpisana czcionka nie istnieje. Popraw błąd i uruchom program ponownie.")
         exit()
     else:
-        path = os.path.join()
+        path = os.path.join(os.path.dirname(__file__))
         full_font = path + "/fonts/" + font_ttf
-        print(full_font)
 
     with open(rodo_txt, 'r') as rt:
         rodo = rt.read()
-
 
     pdf = FPDF(format=document_format, orientation = "P")
     pdf.l_margin = int(maring_left)
@@ -45,20 +43,25 @@ def createpdf():
     pdf.set_font(font_text, "", size=int(font_size))
     pdf.multi_cell(int(margin_right),int(line_spacing), txt=str(rodo), align=align_font)
     
-    pdf.output("temp.pdf")
+    pdf.output(os.path.join(os.path.dirname(__file__), "temp.pdf"))
 
-    merge_pdf("temp.pdf", new_file_cv_name)
+    temp_pdf_path = (os.path.join(os.path.dirname(__file__), "temp.pdf"))
+
+    merge_pdf(temp_pdf_path, new_file_cv_name)
 
     return 
 
-def merge_pdf(temp_pdf, filename_cv):
+def merge_pdf(temp_pdf, new_cv):
 
-    if not os.path.exists("cv.pdf"):
+    new_cv_path = os.path.join(os.path.dirname(__file__), new_cv)
+
+    cv_path = os.path.join(os.path.dirname(__file__), 'cv.pdf')
+    if not os.path.exists(cv_path):
         print("Nie znalazłem pliku cv.pdf. Skopiuj swoje CV do folderu aplikacji i uruchom program ponownie.")
         exit()
 
 
-    LIST_pdf = ["cv.pdf", temp_pdf]
+    LIST_pdf = [cv_path, temp_pdf]
 
     new_pdf = PyPDF3.PdfFileMerger() 
 
@@ -66,7 +69,7 @@ def merge_pdf(temp_pdf, filename_cv):
         with open(page, 'rb') as f:
             new_pdf.append(f)
 
-    with open(filename_cv, 'wb') as f:
+    with open(new_cv_path, 'wb') as f:
         new_pdf.write(f)
 
     return
