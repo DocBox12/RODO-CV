@@ -11,7 +11,7 @@ def createpdf():
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
 
-    rodo_txt = os.path.join(os.path.dirname(__file__), 'klauzura.txt')
+    rodo_txt = os.path.join(os.path.dirname(__file__), 'rodo.txt')
     config.read(config_file)
 
     document_format = config['Default']['document_format']
@@ -21,8 +21,18 @@ def createpdf():
     maring_left = config['Default']['maring_left']
     margin_right = config['Default']['margin_right']
     line_spacing = config['Default']['line_spacing']
+    new_file_cv_name = config['Default']['new_file_cv_name']
 
-    font_ttf = fonts.fonts_manager.get_font(font_text)
+    LOWER_font_text = font_text.lower()
+
+    font_ttf = fonts.fonts_manager.get_font(LOWER_font_text)
+    if font_ttf is None:
+        print("Wpisana czcionka nie istnieje. Popraw błąd i uruchom program ponownie.")
+        exit()
+    else:
+        path = os.path.join()
+        full_font = path + "/fonts/" + font_ttf
+        print(full_font)
 
     with open(rodo_txt, 'r') as rt:
         rodo = rt.read()
@@ -31,17 +41,23 @@ def createpdf():
     pdf = FPDF(format=document_format, orientation = "P")
     pdf.l_margin = int(maring_left)
     pdf.add_page()
-    pdf.add_font(font_text, '', font_ttf, uni=True)
+    pdf.add_font(font_text, '', full_font, uni=True)
     pdf.set_font(font_text, "", size=int(font_size))
     pdf.multi_cell(int(margin_right),int(line_spacing), txt=str(rodo), align=align_font)
     
     pdf.output("temp.pdf")
 
-    merge_pdf("temp.pdf")
+    merge_pdf("temp.pdf", new_file_cv_name)
 
     return 
 
-def merge_pdf(temp_pdf):
+def merge_pdf(temp_pdf, filename_cv):
+
+    if not os.path.exists("cv.pdf"):
+        print("Nie znalazłem pliku cv.pdf. Skopiuj swoje CV do folderu aplikacji i uruchom program ponownie.")
+        exit()
+
+
     LIST_pdf = ["cv.pdf", temp_pdf]
 
     new_pdf = PyPDF3.PdfFileMerger() 
@@ -50,7 +66,7 @@ def merge_pdf(temp_pdf):
         with open(page, 'rb') as f:
             new_pdf.append(f)
 
-    with open("moje_cv.pdf", 'wb') as f:
+    with open(filename_cv, 'wb') as f:
         new_pdf.write(f)
 
     return

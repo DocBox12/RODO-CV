@@ -4,13 +4,11 @@ import os
 
 def get_font(font_name):
 
-    path = os.getcwd() + "/fonts/"
-
     DICT_fonts = dict(
         arial = "arial.ttf",
         arial_bold = "arialbd.ttf",
         arial_italics_bold = "arialbi.ttf",
-        arial_italics = "arialli.ttf",
+        arial_italics = "ariali.ttf",
         tahoma = "tahoma.ttf",
         times = "times.ttf",
         times_bold = "timesbd.ttf",
@@ -22,6 +20,6 @@ def get_font(font_name):
         verdana_idalics_bold = "verdanaz.ttf"
     )
 
-    ttf_font = path + DICT_fonts.get(font_name)
+    font_ttf = DICT_fonts.get(font_name)
 
-    return ttf_font
+    return font_ttf
