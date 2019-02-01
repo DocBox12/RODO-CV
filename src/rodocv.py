@@ -26,17 +26,30 @@ def createpdf():
 
 
     pdf = FPDF(format=document_format, orientation = "P")
-    pdf.l_margin = 5
-    pdf.r_margin = 100
+    pdf.l_margin = 10
+    #pdf.r_margin = 50
     pdf.add_page()
     pdf.add_font(font_text, '', font_ttf, uni=True)
     pdf.set_font(font_text, "", size=int(font_size))
-    pdf.multi_cell(200,5, txt=rodo, align=align_font)
+    pdf.multi_cell(190,5, txt=rodo, align=align_font)
     
     pdf.output("temp.pdf")
 
+    merge_pdf("temp.pdf")
 
+    return 
 
+def merge_pdf(temp_pdf):
+    LIST_pdf = ["cv.pdf", temp_pdf]
+
+    new_pdf = PyPDF3.PdfFileMerger() 
+
+    for page in LIST_pdf:
+        with open(page, 'rb') as f:
+            new_pdf.append(f)
+
+    with open("moje_cv.pdf", 'wb') as f:
+        new_pdf.write(f)
 
     return
 
