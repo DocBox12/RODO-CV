@@ -26,12 +26,9 @@ def createpdf():
     LOWER_font_text = font_text.lower()
 
     font_ttf = fonts.fonts_manager.get_font(LOWER_font_text)
-    if font_ttf is None:
-        print("Wpisana czcionka nie istnieje. Popraw błąd i uruchom program ponownie.")
-        exit()
-    else:
-        path = os.path.join(os.path.dirname(__file__))
-        full_font = path + "/fonts/" + font_ttf
+    
+    path = os.path.join(os.path.dirname(__file__))
+    full_font = path + "/fonts/" + font_ttf
 
     with open(rodo_txt, 'r') as rt:
         rodo = rt.read()
@@ -71,6 +68,7 @@ def merge_pdf(temp_pdf, new_cv):
 
     with open(new_cv_path, 'wb') as f:
         new_pdf.write(f)
+        print("Wygenerowałem CV")
 
     return
 
