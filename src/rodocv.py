@@ -17,7 +17,7 @@ def createpdf():
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
 
-    rodo_txt = os.path.join(os.path.dirname(__file__), 'rodo.txt')
+    rodo_txt = os.path.join(os.path.dirname(__file__), 'klauzura.txt')
     config.read(config_file)
 
     document_format = config['Default']['document_format']

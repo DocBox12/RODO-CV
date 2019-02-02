@@ -18,16 +18,16 @@ Aplikacja była testowana na systemie operacyjnym Linux. Takie systemy jak Windo
   - python3
   - virtualenv dla pythona3
   - wget
-  - fpdf
-  - PyPDF3
 
-- utwórz wirtualne środowisko dla Pythona 3 i zainstaluj wyżej wymienione oprogramowanie. Aplikację wget zainstaluj z repozytorium.
-- wejdź na [tę stronę](https://github.com/DocBox12/RODO-CV/releases) i pobierz najnowszą wersją **stabilną.**
-- rozpakuj pobrane archiwum do katalogu z utworzonym wirtualnym środowiskiem i aktywuj wirtualne środowisko
-- przejdź do katalogu src
-- skopiuj swoje CV zmieniając jego nazwę na cv.pdf
-- otwórz plik klauzura.txt i wpisz tam klauzurę RODO, która zostanie dodana do twojego CV.
-- uzupełnij plik config.ini
+- utwórz wirtualne środowisko dla Pythona 3 i zainstaluj w nim następujące pakiety:
+    - fpdf
+    - PyPDF3
+- wejdź na [tę stronę](https://github.com/DocBox12/RODO-CV/releases) i pobierz najnowszą wersję **stabilną.**
+- rozpakuj pobrane archiwum do katalogu z utworzonym wirtualnym środowiskiem
+- przejdź do katalogu **src**
+- skopiuj swoje CV zmieniając jego nazwę na **cv.pdf** do katalogu **src**
+- otwórz plik **klauzura.txt** i wpisz tam klauzurę RODO, która zostanie dodana do twojego CV, ewentualnie skorzystaj z domyślnej
+- skonfiguruj plik **config.ini** bądź też skorzystaj z domyślnych ustawień
 - wykonaj polecenie `chmod +x rodocv.py`
 - uruchom plik **rodocv.py**
 - twoje CV zostanie wygenerowane i zapisane w tym katalogu, w którym jest aplikacja
@@ -36,7 +36,7 @@ Aplikacja była testowana na systemie operacyjnym Linux. Takie systemy jak Windo
 
 ## config.ini
 
-Przed uruchomieniem aplikacji musisz odpowiednio skonfigurować plik **config.ini**. 
+Przed uruchomieniem aplikacji możesz skonfigurować plik **config.ini**. wedle własnych preferencji bądź też skorzystać z ustawień standardowych.
 
 - `document_format = A4` - format dokumentu. Domyślnie jest A4.
 - `font_text = arial` - krój czcionki. Listę dostępnych czcionek znajdziesz [na tej stronie](https://github.com/DocBox12/RODO-CV/wiki/Czcionki)
