@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
 
+# MAINTAINER
+
+# Author: DocBox12
+# Webpage: http://aboutme.morfiblog.pl/
+
+
 import os
 from fpdf import FPDF
 import PyPDF3

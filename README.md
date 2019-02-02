@@ -39,7 +39,7 @@ Aplikacja była testowana na systemie operacyjnym Linux. Takie systemy jak Windo
 Przed uruchomieniem aplikacji musisz odpowiednio skonfigurować plik **config.ini**. 
 
 - `document_format = A4` - format dokumentu. Domyślnie jest A4.
-- `font_text = arial` - krój czcionki. Listę dostępnych czcionek [na tej stronie](https://github.com/DocBox12/RODO-CV/wiki/Czcionki)
+- `font_text = arial` - krój czcionki. Listę dostępnych czcionek znajdziesz [na tej stronie](https://github.com/DocBox12/RODO-CV/wiki/Czcionki)
 - `font_size = 10` - rozmiar czcionki
 - `align_font = L` - rodzaj wyrównania tekstu
 - `maring_left = 10` - ustawienie lewego marginesu
