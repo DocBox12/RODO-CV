@@ -16,8 +16,8 @@ def get_font(font_name):
         times_italics = "timesi.ttf",
         verdana = "verdana.ttf",
         verdana_bold = "verdanab.ttf",
-        verdana_idalics = "verdanai.ttf",
-        verdana_idalics_bold = "verdanaz.ttf"
+        verdana_italics = "verdanai.ttf",
+        verdana_italics_bold = "verdanaz.ttf"
     )
 
     font_ttf = DICT_fonts.get(font_name)
@@ -49,8 +49,8 @@ def download_font(font_name):
         times_italics = "https://github.com/DocBox12/msfonts/raw/master/timesi.ttf",
         verdana = "https://github.com/DocBox12/msfonts/raw/master/verdana.ttf",
         verdana_bold = "https://github.com/DocBox12/msfonts/raw/master/verdanab.ttf",
-        verdana_idalics = "https://github.com/DocBox12/msfonts/raw/master/verdanai.ttf",
-        verdana_idalics_bold = "https://github.com/DocBox12/msfonts/raw/master/verdanaz.ttf"
+        verdana_italics = "https://github.com/DocBox12/msfonts/raw/master/verdanai.ttf",
+        verdana_italics_bold = "https://github.com/DocBox12/msfonts/raw/master/verdanaz.ttf"
     )
 
     font_url = DICT_fonts.get(font_name)
