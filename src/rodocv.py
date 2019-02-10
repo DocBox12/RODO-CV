@@ -16,7 +16,7 @@ import updater
 VERSION = "1.1-alpha"
 
 def createpdf(default):
-    check_version()
+    check_version_and_news()
     # Loading config
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
@@ -91,13 +91,20 @@ def default_enclosure():
     
     return enclosure
 
-def check_version():
+def check_version_and_news():
     update = updater.check_update(VERSION)
-    if update is None:
-        return
-    else:
+    if update is not None:
         print(update)
-        return
+
+    news = updater.news()
+    if news is not None:
+        print(news)
+
+    return
+
+def run_upgrade():
+    updater.check_version(VERSION)
+    return
 
 
 if __name__ == "__main__":
