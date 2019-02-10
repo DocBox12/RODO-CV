@@ -12,6 +12,7 @@ import configparser
 import fonts.fonts_manager
 import argparse
 import updater
+import install
 
 VERSION = "1.1-alpha"
 
