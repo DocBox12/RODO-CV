@@ -11,8 +11,12 @@ import PyPDF3
 import configparser
 import fonts.fonts_manager
 import argparse
+import updater
+
+VERSION = "1.1-alpha"
 
 def createpdf(default):
+    check_version()
     # Loading config
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
@@ -86,6 +90,15 @@ def default_enclosure():
     
     
     return enclosure
+
+def check_version():
+    update = updater.check_update(VERSION)
+    if update is None:
+        return
+    else:
+        print(update)
+        return
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
