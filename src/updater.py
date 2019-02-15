@@ -3,10 +3,9 @@
 import requests
 import os
 
-def check_update(version):
+def search_update(version):
 
-    URL = ""
-    url_more_information = "https://github.com/DocBox12/RODO-CV/releases"
+    URL = "https://raw.githubusercontent.com/DocBox12/RODO-CV/version/stable.txt"
     website_data = requests.get(URL)
     if website_data.status_code == 200:
         # Remove all white chars
@@ -15,9 +14,13 @@ def check_update(version):
         return
     
     if str(version) == str(raw_data_from_website):
-        return
+        return False
     else:
-        info = "Pojawiła się nowa wersja RODO-CV oznaczona numerem %s. Ty posiadasz wersję %s. Możesz dokonać aktualizacji, jednak przed jej dokonaniem zapoznaj się z informacjami odnośnie wydania na strone internetowej %s." % (raw_data_from_website, version, url_more_information)
+        info = "INFO!!! \nPojawiła się nowa wersja RODO-CV oznaczona numerem %s. Ty posiadasz wersję %s. Możesz dokonać aktualizacji. Uruchom plik install.py" % (raw_data_from_website, version)
         print(info)
         
+    return True
+
+
+def news():
     return

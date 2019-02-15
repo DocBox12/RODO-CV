@@ -12,12 +12,11 @@ import configparser
 import fonts.fonts_manager
 import argparse
 import updater
-import install
 
 VERSION = "1.1-alpha"
 
 def createpdf(default):
-    check_version_and_news()
+    check_version()
     # Loading config
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
@@ -92,19 +91,11 @@ def default_enclosure():
     
     return enclosure
 
-def check_version_and_news():
-    update = updater.check_update(VERSION)
+def check_version():
+    update = updater.search_update(VERSION)
     if update is not None:
         print(update)
 
-    news = updater.news()
-    if news is not None:
-        print(news)
-
-    return
-
-def run_upgrade():
-    updater.check_version(VERSION)
     return
 
 
