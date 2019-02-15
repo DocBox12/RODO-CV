@@ -5,23 +5,6 @@ import argparse
 
 VERSION = "1.1-alpha"
 
-def install():
-
-    execute_command = ("""
-                        git init
-                        git pull https://github.com/DocBox12/RODO-CV.git
-                        virtualenv -p python3 .
-                        ./bin/pip3 install fpdf
-                        ./bin/pip3 install PyPDF3
-                        ./bin/pip3 install requests
-                        chmod +x ./src/rodocv.py
-                        """)
-
-    os.system(execute_command)
-
-    return
-
-
 def update():
     os.system("git pull https://github.com/DocBox12/RODO-CV.git")
     exit()
@@ -42,11 +25,7 @@ def reset_app():
     return
 
 def check_update():
-    try:
-        import src.updater
-    except:
-        print("Najpierw zainstaluj aplikację.")
-        return
+    import src.updater
     value = src.updater.search_update(VERSION)
     if value is True:
         print("Czy chcesz dokonać aktualizacji? [T = TAK] [N = NIE]")
@@ -103,8 +82,6 @@ def question():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--install", help="Instaluje wirtualne środowisko Pythona 3 i pobiera najnowszą wersję aplikacji z serwera", action="store_true")
-
     parser.add_argument("--check_update", help="Instaluje wirtualne środowisko Pythona 3 i pobiera najnowszą wersję aplikacji z serwera", action="store_true")
 
     parser.add_argument("--force_update", help="Przywraca stan aplikacji do oficjalnego wydania i pobiera najnowszą wersję z serwera. Wszystkie twoje ustawienia zostaną usunięte", action="store_true")
@@ -112,10 +89,6 @@ if __name__ == "__main__":
     parser.add_argument("--reset", help="Przywraca aplikację do pierwotnego stanu. Wszystkie twoje ustawienia zostaną usunięte", action="store_true")
 
     args = parser.parse_args()
-
-
-    if args.install:
-        install()
     
     if args.force_update:
         force_update()
