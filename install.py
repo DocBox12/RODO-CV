@@ -9,7 +9,7 @@ def install():
 
     execute_command = ("""
                         git init
-                        git pull https://gitlab.com/DocBox12/rodo-cv.git
+                        git pull https://github.com/DocBox12/RODO-CV.git
                         virtualenv -p python3 .
                         ./bin/pip3 install fpdf
                         ./bin/pip3 install PyPDF3
@@ -23,14 +23,14 @@ def install():
 
 
 def update():
-    os.system("git pull https://gitlab.com/DocBox12/rodo-cv.git")
+    os.system("git pull https://github.com/DocBox12/RODO-CV.git")
     exit()
 
 
 def force_update():
     execute_command = ("""
                         git reset --hard
-                        git pull https://gitlab.com/DocBox12/rodo-cv.git
+                        git pull https://github.com/DocBox12/RODO-CV.git
                         chmod +x ./src/rodocv.py
                         """)
 
