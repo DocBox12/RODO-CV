@@ -82,7 +82,7 @@ def question():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--check_update", help="Instaluje wirtualne środowisko Pythona 3 i pobiera najnowszą wersję aplikacji z serwera", action="store_true")
+    parser.add_argument("--check_update", help="Sprawdza, czy jest dostępna nowa wersja programu", action="store_true")
 
     parser.add_argument("--force_update", help="Przywraca stan aplikacji do oficjalnego wydania i pobiera najnowszą wersję z serwera. Wszystkie twoje ustawienia zostaną usunięte", action="store_true")
 
