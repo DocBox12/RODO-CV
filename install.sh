@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# Maintainer DocBox12
+# Github: https://github.com/DocBox12
+# Website: https://docbox12.github.io/
+
 set -e
 
 git init
