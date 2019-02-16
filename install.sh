@@ -7,7 +7,7 @@
 set -e
 
 git init
-git pull https://github.com/DocBox12/RODO-CV.git
+git pull https://gitlab.com/DocBox12/rodo-cv.git
 virtualenv -p python3 .
 ./bin/pip3 install fpdf
 ./bin/pip3 install PyPDF3
