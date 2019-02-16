@@ -14,3 +14,4 @@ virtualenv -p python3 .
 ./bin/pip3 install requests
 chmod +x install.py
 chmod +x ./src/rodocv.py
+rm install.sh
