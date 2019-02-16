@@ -24,8 +24,8 @@ Aplikacja była testowana na systemie operacyjnym Linux. Takie systemy jak Windo
 
 - utwórz folder w którym ma zostać zainstalowana aplikacja
 - uruchom konsolę i przejdź do nowo utworzonego folderu
-- uruchom polecenie `wget https://raw.githubusercontent.com/DocBox12/RODO-CV/version/install.sh`
-- po pobraniu pliku wykonaj polecenie `chmod +x install.sh && ./install.sh`
+- uruchom polecenie:
+  -  `wget https://raw.githubusercontent.com/DocBox12/RODO-CV/version/install.sh && chmod +x install.sh && ./install.sh`
 - skrypt pobierze program oraz utworzy wirtualne środowisko Pythona. Po zakończeniu wszystkich czynności aktywuj wirtualne środowisko Pythona i aplikacja jest gotowa do użycia
 
 **Instalacja ręczna**

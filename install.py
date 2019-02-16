@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 
+# MAINTAINER
+
+# Author: DocBox12
+# Webpage: https://docbox12.github.io/
+
 import os
 import argparse
 import src.version
@@ -88,7 +93,7 @@ def check_type_update():
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--check_update", help="Sprawdza, czy jest dostępna nowa wersja programu", action="store_true")
+    parser.add_argument("--check_update", help="Sprawdza czy jest dostępna nowa wersja programu, jeśli tak to proponuje aktualizacje", action="store_true")
 
     parser.add_argument("--force_update", help="Przywraca stan aplikacji do oficjalnego wydania i pobiera najnowszą wersję z serwera. Wszystkie twoje ustawienia zostaną usunięte", action="store_true")
 
