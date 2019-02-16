@@ -12,8 +12,8 @@ import configparser
 import fonts.fonts_manager
 import argparse
 import updater
+import version
 
-VERSION = "1.1-alpha"
 
 def createpdf(default):
     check_version()
@@ -92,6 +92,7 @@ def default_enclosure():
     return enclosure
 
 def check_version():
+    VERSION = version.app_version()
     update = updater.search_update(VERSION)
     if update is not None:
         print(update)

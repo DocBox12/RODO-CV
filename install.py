@@ -3,8 +3,6 @@
 import os
 import argparse
 
-VERSION = "1.1-alpha"
-
 def update():
     os.system("git pull https://github.com/DocBox12/RODO-CV.git")
     exit()
@@ -25,8 +23,8 @@ def reset_app():
     return
 
 def check_update():
-    import src.updater
-    value = src.updater.search_update(VERSION)
+    import src.version
+    value = src.version.app_version()
     if value is True:
         print("Czy chcesz dokonać aktualizacji? [T = TAK] [N = NIE]")
         while True:
@@ -39,7 +37,7 @@ def check_update():
             else:
                 print("Zły wybór, spróbuj ponownie.")
     else:
-        print("Posiadasz najnowszą wersję")
+        print("Posiadasz najnowszą wersję.")
 
 
     return
@@ -58,7 +56,7 @@ def check_type_update():
         exit()
     
     if str(raw_data_from_website).upper() == "YES":
-        print("UWAGA! Wykryto, że najnowsza aktualizacja zmienia ważne pliki, które są niezbędne do działania aktualizacji. Przeczytaj informacje o wydaniu aby dowiedzieć się więcej. %s") % (more_information)
+        print("UWAGA! Wykryto, że najnowsza aktualizacja zmienia ważne pliki które są niezbędne do działania aktualizacji. Przeczytaj informacje o wydaniu aby dowiedzieć się więcej. %s") % (more_information)
         print("Czy chcesz kontynuować? [T=TAK] [N=NIE]")
         while True:
             choose = input()
@@ -71,14 +69,7 @@ def check_type_update():
                 print("Zły wybór, spróbuj ponownie.")
     else:
         update()
-    
-
-def question():
-    print("\n Czy chcesz dokonać aktualizacji [T=TAK] [N=NIE]")
-    return
-
-
-
+        
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
