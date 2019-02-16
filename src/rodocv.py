@@ -93,9 +93,7 @@ def default_enclosure():
 
 def check_version():
     VERSION = version.app_version()
-    update = updater.search_update(VERSION)
-    if update is not None:
-        print(update)
+    updater.search_update(VERSION)
 
     return
 

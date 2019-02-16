@@ -2,6 +2,9 @@
 
 import os
 import argparse
+import src.version
+import src.updater
+import requests
 
 def update():
     os.system("git pull https://github.com/DocBox12/RODO-CV.git")
@@ -13,6 +16,7 @@ def force_update():
                         git reset --hard
                         git pull https://github.com/DocBox12/RODO-CV.git
                         chmod +x ./src/rodocv.py
+                        chmod +x install.py
                         """)
 
     os.system(execute_command)
@@ -23,8 +27,9 @@ def reset_app():
     return
 
 def check_update():
-    import src.version
-    value = src.version.app_version()
+
+    current_version = src.version.app_version()
+    value = src.updater.search_update(current_version)
     if value is True:
         print("Czy chcesz dokonać aktualizacji? [T = TAK] [N = NIE]")
         while True:
@@ -44,7 +49,6 @@ def check_update():
 
 
 def check_type_update():
-    import requests
     URL = "https://github.com/DocBox12/RODO-CV/blob/version/warning.txt"
     more_information = "https://github.com/DocBox12/RODO-CV/releases"
     website_data = requests.get(URL)
