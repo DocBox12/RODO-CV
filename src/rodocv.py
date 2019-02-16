@@ -3,16 +3,20 @@
 # MAINTAINER
 
 # Author: DocBox12
-# Webpage: http://aboutme.morfiblog.pl/
-
+# Webpage: https://docbox12.github.io/
 
 import os
 from fpdf import FPDF
 import PyPDF3
 import configparser
 import fonts.fonts_manager
+import argparse
+import updater
+import version
 
-def createpdf():
+
+def createpdf(default):
+    check_version()
     # Loading config
     config = configparser.ConfigParser()
     config_file = os.path.join(os.path.dirname(__file__), 'config.ini')
@@ -36,8 +40,11 @@ def createpdf():
     path = os.path.join(os.path.dirname(__file__))
     full_font = path + "/fonts/" + font_ttf
 
-    with open(rodo_txt, 'r') as rt:
-        rodo = rt.read()
+    if default is False:
+        with open(rodo_txt, 'r') as rt:
+            rodo = rt.read()
+    else:
+        rodo = default_enclosure()
 
     pdf = FPDF(format=document_format, orientation = "P")
     pdf.l_margin = int(maring_left)
@@ -76,7 +83,28 @@ def merge_pdf(temp_pdf, new_cv):
         new_pdf.write(f)
         print("Wygenerowałem CV")
 
+    exit()
+
+def default_enclosure():
+    enclosure = "Wyrażam zgodę na przetwarzanie danych osobowych zawartych w niniejszym dokumencie do realizacji obecnego procesu rekrutacyjnego zgodnie z ustawą z dnia 10 maja 2018 roku o ochronie danych osobowych (Dz. Ustaw z 2018, poz. 1000) oraz zgodnie z Rozporządzeniem Parlamentu Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (RODO)."
+    
+    
+    return enclosure
+
+def check_version():
+    VERSION = version.app_version()
+    updater.search_update(VERSION)
+
     return
 
+
 if __name__ == "__main__":
-    createpdf()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--default", help="Dodaje domyślną klauzurę RODO do CV pomijając tekst podany w pliku.", action="store_true")
+    args = parser.parse_args()
+    
+
+    if args.default:
+        createpdf(True)
+
+    createpdf(False)
