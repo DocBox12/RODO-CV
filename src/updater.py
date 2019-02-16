@@ -11,6 +11,7 @@ def search_update(version):
         # Remove all white chars
         raw_data_from_website = website_data.content.decode("utf-8").rstrip('\r\n\t')
     else:
+        print("Nie mogę pobrać danych odnośnie aktualizacji.", website_data.status_code)
         return
     
     if str(version) == str(raw_data_from_website):
@@ -20,7 +21,3 @@ def search_update(version):
         print(info)
         
     return True
-
-
-def news():
-    return
