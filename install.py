@@ -8,7 +8,7 @@ import requests
 
 def update():
     execute_command = ("""
-                        git pull https://github.com/DocBox12/RODO-CV.git
+                        git pull https://gitlab.com/DocBox12/rodo-cv.git
                         chmod +x ./src/rodocv.py
                         chmod +x install.py
                         """)
@@ -20,7 +20,7 @@ def update():
 def force_update():
     execute_command = ("""
                         git reset --hard
-                        git pull https://github.com/DocBox12/RODO-CV.git
+                        git pull https://gitlab.com/DocBox12/rodo-cv.git
                         chmod +x ./src/rodocv.py
                         chmod +x install.py
                         """)
@@ -35,7 +35,7 @@ def reset_app():
                         chmod +x install.py
                         """)
     os.system(execute_command)
-    return
+    exit()
 
 def check_update():
 

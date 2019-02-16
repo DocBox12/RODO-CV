@@ -3,7 +3,7 @@
 # MAINTAINER
 
 # Author: DocBox12
-# Webpage: http://aboutme.morfiblog.pl/
+# Webpage: https://docbox12.github.io/
 
 import os
 from fpdf import FPDF
